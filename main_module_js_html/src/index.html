@@ -16,7 +16,7 @@
 <div id="etternavn_test" style="margin-left: 10px; color: red;"></div>
 
 <label for="telefon_boks">Telefon:</label>
-<input type="text" id="telefon_boks">
+<input type="text" id="telefon_boks" pattern="[0-9]{8}">
 <div id="telefon_test" style="margin-left: 10px; color: red;"></div>
 
 <label for="epost_boks">E-post</label>
@@ -25,83 +25,10 @@
 
 <h2>Billetter</h2>
 <div id="superdiv"></div>
-<button onclick="printName()">Print stuff</button>
+<button onclick="printNavn()">Print stuff</button>
 
 <div id="slettdiv"></div>
-<button onClick="clearNames()">Slett alle billetter</button>
-
-<script type="application/javascript">
-    let nameArray = []; // Array to store names
-
-    function printName() {
-        const navn = document.getElementById("navn_boks").value;
-        const etternavn = document.getElementById("etternavn_boks").value;
-        const telefon = document.getElementById("telefon_boks").value;
-        const epost = document.getElementById("epost_boks").value;
-
-
-
-        //navn//
-        if (navn === "") {
-            document.getElementById("navn_test").innerText="Ugyldig navn";
-
-        } else {
-            document.getElementById("navn_test").innerText = ""; // Clear validation message if name is not empty
-        }
-
-        //Etternavn//
-        if (etternavn === "") {
-            document.getElementById("etternavn_test").innerText="Ugyldig etternavn";
-        }
-        else {
-            document.getElementById("etternavn_test").innerText = ""; // Clear validation message if name is not empty
-        }
-
-        //telefon//
-        if (telefon === "") {
-            document.getElementById("telefon_test").innerText="Ugyldig telefonnummer";
-        }
-
-        else {
-            document.getElementById("telefon_test").innerText = ""; // Clear validation message if name is not empty
-        }
-
-        //epost//
-        if (epost === "") {
-            document.getElementById("epost_test").innerText="Ugyldig epost";
-        }
-        else {
-            document.getElementById("epost_test").innerText = ""; // Clear validation message if name is not empty
-        }
-
-        if (navn === "" || etternavn === "" || telefon === "" || epost === "") {
-            return;
-        }
-        //!/^\d{8}$/.test(telefon)//
-        //epost//
-        //flytt js i egen fil - slett side2//
-
-        // Array verdier//
-        nameArray.push({ navn: navn, etternavn: etternavn, telefon: telefon, epost: epost });
-
-        document.getElementById("navn_boks").value = "";
-        document.getElementById("etternavn_boks").value = "";
-        document.getElementById("telefon_boks").value = "";
-        document.getElementById("epost_boks").value = "";
-
-        // Array liste //
-        let Arrayliste = "\n";
-        for (const person of nameArray) {
-            Arrayliste += person.navn + " " + person.etternavn + " "+ person.telefon + " " +person.epost + "\n";
-        }
-
-        // Update the superdiv element with the array content
-        document.getElementById("superdiv").innerText = Arrayliste;
-
-    }
-    function clearNames() {
-        nameArray = []; // Empty the array
-        document.getElementById("superdiv").innerText = ""; // Clear the displayed names
-        //
-    }
-</script>
+<button onClick="fjernNavn()">Slett alle billetter</button>
+<script src="main.js"></script>
+</body>
+</html>
