@@ -7,8 +7,6 @@
     const telefon = document.getElementById("telefon_boks").value;
     const epost = document.getElementById("epost_boks").value;
 
-
-
     //navn//
     if (navn === "") {
     document.getElementById("navn_test").innerText="Ugyldig navn";
@@ -39,8 +37,12 @@
 
     //epost//
     if (epost === "") {
-    document.getElementById("epost_test").innerText="Ugyldig epost";
+    document.getElementById("epost_test").innerText="Manglende epost";
 }
+    else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(epost)) {
+        document.getElementById("epost_test").innerText = "Ugyldig epost";
+        return;
+    }
     else {
     document.getElementById("epost_test").innerText = "";
 }
@@ -70,18 +72,3 @@
     //
 }
 
-/* 0.) input med forskjellige input-valideringer per felt.
-1.) Trykk kjøp billett
-* 2.) lagre billetten som obj. i et arrray
-*3.) list ut billetten under "Alle billetter" - knappen
-*4.) Blam ut input-felt for nye billetter
-*  5.) Slett array (blank) med "slett alle billettene" - knappen
-* */
-
-
-/* en input-box trenger en label ellers feilmelding i IntelliJ-->
-<!--<input type="text" onChange="visNavn()" id="fornavner"/>-->
-<!--function visNavn(){-->
-    <!--const navneliste-->
-<!--}
-<!--<button onClick="visMelding()">Vis melding</button>-->*/
